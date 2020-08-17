@@ -25,5 +25,8 @@ namespace Project.DAL.Models
         public string Abrv { get; set; }
 
         public virtual ICollection<VehicleModel> VehicleModelCollection { get; set; }
+
+        [NotMapped]
+        VehicleMake IVehicle.SelectedVehicleMake { get; set; }
     }
 }

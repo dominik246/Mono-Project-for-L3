@@ -1,4 +1,7 @@
-﻿using Project.DAL.Models;
+﻿using Microsoft.EntityFrameworkCore;
+
+using Project.DAL.DataAccess.Extensions;
+using Project.DAL.Models;
 
 using System;
 using System.Collections.Generic;
@@ -8,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Project.DAL.DataAccess
 {
-    public class VehicleService<TModel> where TModel : class, IVehicle
+    public class VehicleService<TModel> : IVehicleService<TModel> where TModel : class, IVehicle
     {
         private readonly IServiceDbContext _dbContext;
         public VehicleService(IServiceDbContext dbContext)

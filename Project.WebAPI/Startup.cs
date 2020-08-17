@@ -16,7 +16,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-using Project.DAL;
+using Project.DAL.DataAccess;
+using Project.DAL.Models;
 
 namespace Project.WebAPI
 {
@@ -51,6 +52,22 @@ namespace Project.WebAPI
                 .RegisterType<ServiceDbContext>()
                 .As<IServiceDbContext>()
                 .WithParameter("options", dbContextOptions.Options)
+                .InstancePerLifetimeScope();
+            builder
+                .RegisterGeneric(typeof(VehicleService<>))
+                .As(typeof(IVehicleService<>))
+                .InstancePerLifetimeScope();
+            builder
+                .RegisterType<SortModel>()
+                .AsSelf()
+                .InstancePerLifetimeScope();
+            builder
+                .RegisterType<FilterModel>()
+                .AsSelf()
+                .InstancePerLifetimeScope();
+            builder
+                .RegisterGeneric(typeof(PageModel<>))
+                .AsSelf()
                 .InstancePerLifetimeScope();
         }
 
