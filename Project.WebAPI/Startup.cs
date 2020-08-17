@@ -16,8 +16,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
+using Project.Common.Models;
 using Project.DAL.DataAccess;
-using Project.DAL.Models;
 
 namespace Project.WebAPI
 {

@@ -1,4 +1,5 @@
-﻿using Project.DAL.Models;
+﻿using Project.Common.Models;
+using Project.DAL.Models;
 
 using System.Threading.Tasks;
 

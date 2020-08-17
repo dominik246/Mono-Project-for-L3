@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
+using Project.Common.Models;
+using Project.DAL.DataAccess;
 using Project.DAL.Models;
 
 using System;

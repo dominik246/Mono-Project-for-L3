@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
+using Project.Common.Models;
 using Project.DAL.DataAccess.Extensions;
 using Project.DAL.Models;
 
