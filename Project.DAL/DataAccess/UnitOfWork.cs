@@ -18,9 +18,9 @@ namespace Project.DAL.DataAccess
         public IVehicleService VehicleService { get; }
 
 
-        public async Task CommitAsync()
+        public async Task<int> CommitAsync()
         {
-            await _dbContext.SaveChangesAsync();
+            return await _dbContext.SaveChangesAsync();
         }
 
         public async Task RollbackAsync()

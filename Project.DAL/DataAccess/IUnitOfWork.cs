@@ -7,7 +7,7 @@ namespace Project.DAL.DataAccess
     {
         IVehicleService VehicleService { get; }
 
-        Task CommitAsync();
+        Task<int> CommitAsync();
         Task RollbackAsync();
     }
 }
