@@ -54,8 +54,12 @@ namespace Project.WebAPI
                 .WithParameter("options", dbContextOptions.Options)
                 .InstancePerLifetimeScope();
             builder
-                .RegisterGeneric(typeof(VehicleService<>))
-                .As(typeof(IVehicleService<>))
+                .RegisterType<VehicleService>()
+                .As<IVehicleService>()
+                .InstancePerLifetimeScope();
+            builder
+                .RegisterType<UnitOfWork>()
+                .As<IUnitOfWork>()
                 .InstancePerLifetimeScope();
             builder
                 .RegisterType<SortModel>()

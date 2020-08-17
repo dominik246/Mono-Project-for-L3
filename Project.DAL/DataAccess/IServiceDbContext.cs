@@ -3,12 +3,13 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 using Project.DAL.Models;
 
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Project.DAL.DataAccess
 {
-    public interface IServiceDbContext
+    public interface IServiceDbContext : IAsyncDisposable
     {
         DbSet<VehicleMake> VehicleMakes { get; set; }
         DbSet<VehicleModel> VehicleModels { get; set; }

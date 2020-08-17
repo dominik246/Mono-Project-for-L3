@@ -9,10 +9,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace Project.DAL.DataAccess
 {
-    public class VehicleService<TModel> : IVehicleService<TModel> where TModel : class, IVehicle
+    public class VehicleService : IVehicleService
     {
         private readonly IServiceDbContext _dbContext;
         public VehicleService(IServiceDbContext dbContext)
@@ -20,7 +21,7 @@ namespace Project.DAL.DataAccess
             _dbContext = dbContext;
         }
 
-        public async Task<PageModel<TModel>> FindAsync(FilterModel filter, PageModel<TModel> page, SortModel sort)
+        public async Task<PageModel<TModel>> FindAsync<TModel>(FilterModel filter, PageModel<TModel> page, SortModel sort) where TModel : class, IVehicle
         {
             page ??= new PageModel<TModel>() { ReturnPaged = false };
             page.QueryResult = await Task.FromResult(_dbContext.Set<TModel>().IncludeAll(_dbContext)
@@ -36,31 +37,28 @@ namespace Project.DAL.DataAccess
             return page;
         }
 
-        public async Task<TModel> GetAsync(int? id)
+        public async Task<TModel> GetAsync<TModel>(int? id) where TModel : class, IVehicle
         {
             return await _dbContext.Set<TModel>().IncludeAll(_dbContext).AsNoTracking().FirstOrDefaultAsync(e => e.Id == id);
         }
 
-        public async Task CreateAsync(TModel entity)
+        public async Task CreateAsync<TModel>(TModel entity) where TModel : class
         {
             await _dbContext.Set<TModel>().AddAsync(entity);
-            await _dbContext.SaveChangesAsync();
         }
 
-        public async Task UpdateAsync(TModel entity)
+        public async Task UpdateAsync<TModel>(TModel entity) where TModel : class
         {
             await Task.Run(() => _dbContext.Set<TModel>().Update(entity));
-            await _dbContext.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(int id)
+        public async Task DeleteAsync<TModel>(int id) where TModel : class
         {
             var entity = await _dbContext.Set<TModel>().FindAsync(id);
 
             if (entity != null)
             {
                 await Task.Run(() => _dbContext.Set<TModel>().Remove(entity));
-                await _dbContext.SaveChangesAsync();
             }
         }
     }
