@@ -2,7 +2,7 @@
 
 using Project.DAL.Models;
 
-namespace Project.DAL
+namespace Project.DAL.DataAccess
 {
     public interface IServiceDbContext
     {
