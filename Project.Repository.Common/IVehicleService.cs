@@ -4,7 +4,7 @@ using Project.Model.Common;
 using System;
 using System.Threading.Tasks;
 
-namespace Project.DAL.DataAccess
+namespace Project.Repository.Common
 {
     public interface IVehicleService
     {

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Project.Repository.Common;
+
+using System;
 using System.Threading.Tasks;
 
 namespace Project.DAL.DataAccess

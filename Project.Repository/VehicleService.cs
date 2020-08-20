@@ -1,8 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
 using Project.Common.Models;
+using Project.DAL.DataAccess;
 using Project.DAL.DataAccess.Extensions;
 using Project.Model.Common;
+using Project.Repository.Common;
 
 using System;
 using System.Collections.Generic;
@@ -11,7 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
 
-namespace Project.DAL.DataAccess
+namespace Project.Repository
 {
     public class VehicleService : IVehicleService
     {
