@@ -3,12 +3,9 @@
 using Project.Common.Models;
 using Project.DAL.DataAccess;
 using Project.Model.Common;
-using Project.Repository.Common;
 using Project.Service.Common;
 
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Project.Service

@@ -1,10 +1,8 @@
 ﻿using Project.Model.Common;
 
-using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
 namespace Project.Model
 {
@@ -27,7 +25,7 @@ namespace Project.Model
         public string Abrv { get; set; }
 
         public virtual ICollection<VehicleModel> VehicleModelCollection { get; set; }
-        
+
         [NotMapped]
         IVehicle IVehicle.SelectedVehicleMake { get; set; }
     }

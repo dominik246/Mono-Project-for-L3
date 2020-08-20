@@ -2,10 +2,6 @@
 
 using Project.Model;
 
-using System;
-using System.Collections.Generic;
-using System.Text;
-
 namespace Project.DAL.DataAccess
 {
     public class ServiceDbContext : DbContext, IServiceDbContext

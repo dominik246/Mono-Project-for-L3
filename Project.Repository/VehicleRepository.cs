@@ -6,12 +6,8 @@ using Project.DAL.DataAccess.Extensions;
 using Project.Model.Common;
 using Project.Repository.Common;
 
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using System.Transactions;
 
 namespace Project.Repository
 {
