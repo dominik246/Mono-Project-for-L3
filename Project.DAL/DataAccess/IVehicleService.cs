@@ -1,5 +1,5 @@
 ﻿using Project.Common.Models;
-using Project.DAL.Models;
+using Project.Model.Common;
 
 using System;
 using System.Threading.Tasks;

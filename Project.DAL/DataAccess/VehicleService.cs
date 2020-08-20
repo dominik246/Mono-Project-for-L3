@@ -2,7 +2,7 @@
 
 using Project.Common.Models;
 using Project.DAL.DataAccess.Extensions;
-using Project.DAL.Models;
+using Project.Model.Common;
 
 using System;
 using System.Collections.Generic;
@@ -24,14 +24,14 @@ namespace Project.DAL.DataAccess
         public async Task<PageModel<TModel>> FindAsync<TModel>(FilterModel filter, PageModel<TModel> page, SortModel sort) where TModel : class, IVehicle
         {
             page ??= new PageModel<TModel>() { ReturnPaged = false };
+
             page.QueryResult = await Task.FromResult(_dbContext.Set<TModel>().IncludeAll(_dbContext)
-                .GetSorted(sort).GetFiltered(filter).AsNoTracking());
+                    .GetSorted(sort).GetFiltered(filter).AsNoTracking());
 
             if (page.ReturnPaged)
             {
                 page.CurrentRowCount = page.QueryResult.Count();
                 page.QueryResult = page.QueryResult.GetPaged(page).QueryResult;
-                page.TotalPageCount = page.TotalPageCount;
             }
 
             return page;

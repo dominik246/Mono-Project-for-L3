@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-using Project.DAL.Models;
+using Project.Model;
 
 using System;
 using System.Threading;

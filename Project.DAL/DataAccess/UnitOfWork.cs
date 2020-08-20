@@ -10,9 +10,10 @@ namespace Project.DAL.DataAccess
     {
         private readonly IServiceDbContext _dbContext;
 
-        public UnitOfWork(IVehicleService vehicleService)
+        public UnitOfWork(IVehicleService vehicleService, IServiceDbContext dbContext)
         {
             VehicleService = vehicleService;
+            _dbContext = dbContext;
         }
 
         public IVehicleService VehicleService { get; }

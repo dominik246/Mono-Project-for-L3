@@ -2,8 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata;
 
 using Project.Common.Models;
-using Project.DAL.DataAccess;
-using Project.DAL.Models;
+using Project.Model.Common;
 
 using System;
 using System.Collections.Generic;
