@@ -2,15 +2,17 @@
 using Project.Model.Common;
 
 using System;
+using System.Collections.Generic;
+using System.Text;
 using System.Threading.Tasks;
 
-namespace Project.Repository.Common
+namespace Project.Service.Common
 {
     public interface IVehicleService
     {
         Task CreateAsync<TModel>(TModel entity) where TModel : class;
         Task DeleteAsync<TModel>(int id) where TModel : class;
-        Task<PageModel<TModel>> FindAsync<TModel>(FilterModel filter, PageModel<TModel> page, SortModel sort) where TModel : class, IVehicle;
+        Task<PageServiceModel<TModel>> FindAsync<TModel>(FilterModel filter, PageRepositoryModel<TModel> page, SortModel sort) where TModel : class, IVehicle;
         Task<TModel> GetAsync<TModel>(int? id) where TModel : class, IVehicle;
         Task UpdateAsync<TModel>(TModel entity) where TModel : class;
     }

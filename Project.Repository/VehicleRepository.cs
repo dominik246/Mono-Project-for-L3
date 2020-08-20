@@ -15,17 +15,17 @@ using System.Transactions;
 
 namespace Project.Repository
 {
-    public class VehicleService : IVehicleService
+    public class VehicleRepository : IVehicleRepository
     {
         private readonly IServiceDbContext _dbContext;
-        public VehicleService(IServiceDbContext dbContext)
+        public VehicleRepository(IServiceDbContext dbContext)
         {
             _dbContext = dbContext;
         }
 
-        public async Task<PageModel<TModel>> FindAsync<TModel>(FilterModel filter, PageModel<TModel> page, SortModel sort) where TModel : class, IVehicle
+        public async Task<PageRepositoryModel<TModel>> FindAsync<TModel>(FilterModel filter, PageRepositoryModel<TModel> page, SortModel sort) where TModel : class, IVehicle
         {
-            page ??= new PageModel<TModel>() { ReturnPaged = false };
+            page ??= new PageRepositoryModel<TModel>() { ReturnPaged = false };
 
             page.QueryResult = await Task.FromResult(_dbContext.Set<TModel>().IncludeAll(_dbContext)
                     .GetSorted(sort).GetFiltered(filter).AsNoTracking());

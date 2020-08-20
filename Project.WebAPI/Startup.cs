@@ -56,8 +56,8 @@ namespace Project.WebAPI
                 .WithParameter("options", dbContextOptions.Options)
                 .InstancePerLifetimeScope();
             builder
-                .RegisterType<VehicleService>()
-                .As<IVehicleService>()
+                .RegisterType<VehicleRepository>()
+                .As<IVehicleRepository>()
                 .InstancePerLifetimeScope();
             builder
                 .RegisterType<UnitOfWork>()
@@ -72,7 +72,7 @@ namespace Project.WebAPI
                 .AsSelf()
                 .InstancePerLifetimeScope();
             builder
-                .RegisterGeneric(typeof(PageModel<>))
+                .RegisterGeneric(typeof(PageRepositoryModel<>))
                 .AsSelf()
                 .InstancePerLifetimeScope();
         }

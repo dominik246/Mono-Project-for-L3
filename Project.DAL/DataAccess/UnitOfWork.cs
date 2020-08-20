@@ -12,14 +12,13 @@ namespace Project.DAL.DataAccess
     {
         private readonly IServiceDbContext _dbContext;
 
-        public UnitOfWork(IVehicleService vehicleService, IServiceDbContext dbContext)
+        public UnitOfWork(IVehicleRepository vehicleRepository, IServiceDbContext dbContext)
         {
-            VehicleService = vehicleService;
+            VehicleRepository = vehicleRepository;
             _dbContext = dbContext;
         }
 
-        public IVehicleService VehicleService { get; }
-
+        public IVehicleRepository VehicleRepository { get; }
 
         public async Task<int> CommitAsync()
         {

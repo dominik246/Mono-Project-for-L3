@@ -13,7 +13,7 @@ namespace Project.DAL.DataAccess.Extensions
 {
     public static class IQueryableExtensions
     {
-        public static PageModel<T> GetPaged<T>(this IQueryable<T> query, PageModel<T> page) where T : class
+        public static PageRepositoryModel<T> GetPaged<T>(this IQueryable<T> query, PageRepositoryModel<T> page) where T : class
         {
             var pageCount = (double)page.CurrentRowCount / page.CurrentPageSize;
             page.TotalPageCount = pageCount == 0 ? 1 : (int)Math.Ceiling(pageCount);

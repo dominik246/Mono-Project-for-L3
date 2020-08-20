@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Project.Common.Models
 {
-    public class PageModel<T> where T : class
+    public class PageRepositoryModel<T> where T : class
     {
         public IQueryable<T> QueryResult { get; set; }
 
