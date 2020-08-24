@@ -1,10 +1,10 @@
-﻿namespace Project.Model
+﻿namespace Project.Model.Common
 {
-    public interface IVehicleModel
+    public interface IVehicleModel : IVehicle
     {
-        string Abrv { get; set; }
-        int Id { get; set; }
+        new string Abrv { get; set; }
+        new int Id { get; set; }
         int MakeId { get; set; }
-        string Name { get; set; }
+        new string Name { get; set; }
     }
 }

@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Project.Model.Common;
+
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -25,6 +27,6 @@ namespace Project.Model
         public virtual ICollection<VehicleModel> VehicleModelCollection { get; set; }
 
         [NotMapped]
-        VehicleMake IVehicle.SelectedVehicleMake { get; set; }
+        IVehicleMake IVehicle.SelectedVehicleMake { get; set; }
     }
 }

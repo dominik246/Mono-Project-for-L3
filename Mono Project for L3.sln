@@ -9,19 +9,21 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Project.DAL", "Project.DAL\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Project.Common", "Project.Common\Project.Common.csproj", "{C13B1001-A967-41DA-80AA-31B6AB9D348B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.Model.Common", "Project.Model.Common\Project.Model.Common.csproj", "{CADC34AF-1854-4B16-9802-A827A862EADE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Project.Model.Common", "Project.Model.Common\Project.Model.Common.csproj", "{CADC34AF-1854-4B16-9802-A827A862EADE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.Model", "Project.Model\Project.Model.csproj", "{9965B934-BB46-4D8F-8D15-F86EB27EABCE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Project.Model", "Project.Model\Project.Model.csproj", "{9965B934-BB46-4D8F-8D15-F86EB27EABCE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.Repository", "Project.Repository\Project.Repository.csproj", "{9C97FE5A-1057-4BBA-ABA2-4FACC56DA712}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Project.Repository", "Project.Repository\Project.Repository.csproj", "{9C97FE5A-1057-4BBA-ABA2-4FACC56DA712}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.Repository.Common", "Project.Repository.Common\Project.Repository.Common.csproj", "{55F01DCE-A332-437C-A4B6-47C93855012F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Project.Repository.Common", "Project.Repository.Common\Project.Repository.Common.csproj", "{55F01DCE-A332-437C-A4B6-47C93855012F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.Service", "Project.Service\Project.Service.csproj", "{0D086D12-CB5C-45D2-A563-9B6DACAB42BE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Project.Service", "Project.Service\Project.Service.csproj", "{0D086D12-CB5C-45D2-A563-9B6DACAB42BE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.Service.Common", "Project.Service.Common\Project.Service.Common.csproj", "{94AA7363-3FF2-477A-8A0E-7F111E98988A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Project.Service.Common", "Project.Service.Common\Project.Service.Common.csproj", "{94AA7363-3FF2-477A-8A0E-7F111E98988A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.Repository.Tests", "Project.Repository.Tests\Project.Repository.Tests.csproj", "{50BACC44-B8F0-41BC-B688-E88074B59005}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Project.Repository.Tests", "Project.Repository.Tests\Project.Repository.Tests.csproj", "{50BACC44-B8F0-41BC-B688-E88074B59005}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.Service.Tests", "Project.Service.Tests\Project.Service.Tests.csproj", "{513E93BD-C248-4A6E-8554-12F39FC1BF2D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +71,10 @@ Global
 		{50BACC44-B8F0-41BC-B688-E88074B59005}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50BACC44-B8F0-41BC-B688-E88074B59005}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{50BACC44-B8F0-41BC-B688-E88074B59005}.Release|Any CPU.Build.0 = Release|Any CPU
+		{513E93BD-C248-4A6E-8554-12F39FC1BF2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{513E93BD-C248-4A6E-8554-12F39FC1BF2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{513E93BD-C248-4A6E-8554-12F39FC1BF2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{513E93BD-C248-4A6E-8554-12F39FC1BF2D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

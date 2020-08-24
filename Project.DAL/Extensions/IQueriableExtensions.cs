@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 using Project.Common.Models;
 using Project.Model;
+using Project.Model.Common;
 
 using System;
 using System.Collections.Generic;
@@ -24,8 +25,10 @@ namespace Project.DAL.Extensions
 
         public static IQueryable<T> GetSorted<T>(this IQueryable<T> query, SortModel sort) where T : class, IVehicle
         {
-            if (sort == null)
-                return query;
+            sort ??= new SortModel()
+            {
+                SortBy = "Name"
+            };
 
             return sort.SortBy switch
             {
