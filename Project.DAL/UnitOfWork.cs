@@ -2,11 +2,12 @@
 
 using System.Threading.Tasks;
 
-namespace Project.DAL.DataAccess
+namespace Project.DAL
 {
     public class UnitOfWork : IUnitOfWork
     {
         private readonly IServiceDbContext _dbContext;
+        public IVehicleRepository VehicleRepository { get; }
 
         public UnitOfWork(IVehicleRepository vehicleRepository, IServiceDbContext dbContext)
         {
@@ -14,7 +15,6 @@ namespace Project.DAL.DataAccess
             _dbContext = dbContext;
         }
 
-        public IVehicleRepository VehicleRepository { get; }
 
         public async Task<int> CommitAsync()
         {

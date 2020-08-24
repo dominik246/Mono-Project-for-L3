@@ -2,7 +2,9 @@
 
 using Project.Model;
 
-namespace Project.DAL.DataAccess
+using System;
+
+namespace Project.DAL
 {
     public class ServiceDbContext : DbContext, IServiceDbContext
     {

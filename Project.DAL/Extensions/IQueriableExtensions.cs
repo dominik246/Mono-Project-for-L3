@@ -2,13 +2,13 @@
 using Microsoft.EntityFrameworkCore.Metadata;
 
 using Project.Common.Models;
-using Project.Model.Common;
+using Project.Model;
 
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Project.DAL.DataAccess.Extensions
+namespace Project.DAL.Extensions
 {
     public static class IQueryableExtensions
     {

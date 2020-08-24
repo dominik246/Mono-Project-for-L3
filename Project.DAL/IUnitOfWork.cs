@@ -2,7 +2,7 @@
 
 using System.Threading.Tasks;
 
-namespace Project.DAL.DataAccess
+namespace Project.DAL
 {
     public interface IUnitOfWork
     {

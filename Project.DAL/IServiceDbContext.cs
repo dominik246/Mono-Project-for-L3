@@ -7,9 +7,9 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Project.DAL.DataAccess
+namespace Project.DAL
 {
-    public interface IServiceDbContext : IAsyncDisposable
+    public interface IServiceDbContext
     {
         DbSet<VehicleMake> VehicleMakes { get; set; }
         DbSet<VehicleModel> VehicleModels { get; set; }
@@ -17,5 +17,6 @@ namespace Project.DAL.DataAccess
         Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default);
         DbSet<TModel> Set<TModel>() where TModel : class;
         IModel Model { get; }
+        ValueTask DisposeAsync();
     }
 }

@@ -1,6 +1,4 @@
-﻿using Project.Model.Common;
-
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Project.Model
@@ -12,8 +10,10 @@ namespace Project.Model
         public int Id { get; set; }
 
         [Display(Name = "Vehicle Make")]
-        public IVehicle SelectedVehicleMake { get; set; }
+        public VehicleMake SelectedVehicleMake { get; set; }
 
+
+        [Required]
         [Display(Name = "Make Name")]
         [ForeignKey(nameof(SelectedVehicleMake))]
         public int MakeId { get; set; }

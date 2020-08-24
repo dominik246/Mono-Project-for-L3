@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 
 using Project.Common.Models;
-using Project.DAL.DataAccess;
-using Project.Model.Common;
+using Project.DAL;
+using Project.Model;
 using Project.Service.Common;
 
 using System;

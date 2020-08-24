@@ -11,7 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 using Project.Common.Models;
-using Project.DAL.DataAccess;
+using Project.DAL;
 using Project.Repository;
 using Project.Repository.Common;
 

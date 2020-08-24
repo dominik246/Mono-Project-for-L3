@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
 using Project.Common.Models;
-using Project.DAL.DataAccess;
-using Project.DAL.DataAccess.Extensions;
-using Project.Model.Common;
+using Project.DAL;
+using Project.DAL.Extensions;
+using Project.Model;
 using Project.Repository.Common;
 
 using System.Linq;
