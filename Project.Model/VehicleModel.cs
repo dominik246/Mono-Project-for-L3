@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Project.Model
 {
-    public class VehicleModel : IVehicle
+    public class VehicleModel : IVehicle, IVehicleModel
     {
         [Display(Name = "ID")]
         [Key]
@@ -11,7 +11,6 @@ namespace Project.Model
 
         [Display(Name = "Vehicle Make")]
         public VehicleMake SelectedVehicleMake { get; set; }
-
 
         [Required]
         [Display(Name = "Make Name")]

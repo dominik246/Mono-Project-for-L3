@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Project.Model
 {
-    public class VehicleMake : IVehicle
+    public class VehicleMake : IVehicle, IVehicleMake
     {
         [Display(Name = "ID")]
         [Key]

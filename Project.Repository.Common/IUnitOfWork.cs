@@ -2,7 +2,7 @@
 
 using System.Threading.Tasks;
 
-namespace Project.DAL
+namespace Project.Repository.Common
 {
     public interface IUnitOfWork
     {

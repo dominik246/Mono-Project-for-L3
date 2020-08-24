@@ -1,8 +1,9 @@
-﻿using Project.Repository.Common;
+﻿using Project.DAL;
+using Project.Repository.Common;
 
 using System.Threading.Tasks;
 
-namespace Project.DAL
+namespace Project.Repository
 {
     public class UnitOfWork : IUnitOfWork
     {
