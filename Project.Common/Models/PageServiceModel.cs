@@ -10,7 +10,9 @@ namespace Project.Common.Models
         public int CurrentPageIndex { get; set; }
         public int TotalPageCount { get; set; }
         public int CurrentPageSize { get; set; } = 5;
-        public int CurrentRowCount { get; set; }
+        public int TotalRowCount { get; set; }
+
+        public bool ReturnPaged { get; set; } = true;
 
         public int FirstRowOnPage
         {
@@ -19,7 +21,7 @@ namespace Project.Common.Models
 
         public int LastRowOnPage
         {
-            get { return Math.Min(CurrentPageIndex * CurrentPageSize, CurrentRowCount); }
+            get { return Math.Min(CurrentPageIndex * CurrentPageSize, TotalRowCount); }
         }
 
         public bool HasPreviousPage

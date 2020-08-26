@@ -1,8 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
 using Project.Model;
-
-using System;
+using Project.Model.Common;
 
 namespace Project.DAL
 {
@@ -10,7 +9,16 @@ namespace Project.DAL
     {
         public ServiceDbContext(DbContextOptions options) : base(options) { }
 
-        public DbSet<VehicleMake> VehicleMakes { get; set; }
-        public DbSet<VehicleModel> VehicleModels { get; set; }
+        public DbSet<VehicleMakeRepoModel> VehicleMakes { get; set; }
+        public DbSet<VehicleModelRepoModel> VehicleModels { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<VehicleMakeRepoModel>()
+                .HasMany(m => m.VehicleModelCollection)
+                .WithOne(m => (VehicleMakeRepoModel)m.SelectedVehicleMake)
+                .HasForeignKey(m => m.MakeId);
+
+        }
     }
 }

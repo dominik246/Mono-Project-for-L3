@@ -6,10 +6,10 @@ namespace Project.Common.Models
     {
         public IQueryable<T> QueryResult { get; set; }
 
-        public int CurrentPageIndex { get; set; }
+        public int CurrentPageIndex { get; set; } = 1;
         public int TotalPageCount { get; set; }
         public int CurrentPageSize { get; set; } = 5;
-        public int CurrentRowCount { get; set; }
+        public int TotalRowCount { get; set; }
 
         public bool ReturnPaged { get; set; } = true;
     }

@@ -22,14 +22,14 @@ namespace Project.Service.Tests
         [InlineData("Volkswagen", "VW", "Golf 7", "Golf 7", 1, 1)]
         public async Task VehicleShouldBeReturnedTheory(string makeName, string makeAbrv, string modelName, string modelAbrv, int makeId, int modelId)
         {
-            IVehicleMake make = new VehicleMake()
+            IVehicleMakeRepoModel make = new VehicleMakeRepoModel()
             {
                 Name = makeName,
                 Abrv = makeAbrv,
                 Id = makeId
             };
 
-            IVehicleModel model = new VehicleModel()
+            IVehicleModelRepoModel model = new VehicleModelRepoModel()
             {
                 Name = modelName,
                 Abrv = modelAbrv,
@@ -39,28 +39,28 @@ namespace Project.Service.Tests
             };
 
             var vehicleService = new Mock<IVehicleService>();
-            vehicleService.Setup(s => s.GetAsync<IVehicleModel>(modelId)).ReturnsAsync(model);
-            var result = await vehicleService.Object.GetAsync<IVehicleModel>(modelId);
+            vehicleService.Setup(s => s.GetAsync<IVehicleModelRepoModel>(modelId)).ReturnsAsync(model);
+            var result = await vehicleService.Object.GetAsync<IVehicleModelRepoModel>(modelId);
 
             result.Should().NotBeNull();
             result.Abrv.Should().Be(modelAbrv);
             result.Name.Should().Be(modelName);
             result.SelectedVehicleMake.Name.Should().Be(makeName);
-            vehicleService.Verify(x => x.GetAsync<IVehicleModel>(modelId), Times.Once());
+            vehicleService.Verify(x => x.GetAsync<IVehicleModelRepoModel>(modelId), Times.Once());
         }
         
         [Theory]
         [InlineData("Volkswagen", "VW", "Golf 7", "Golf 7", 1, 1)]
         public async Task VehicleShouldBeCreatedTheory(string makeName, string makeAbrv, string modelName, string modelAbrv, int makeId, int modelId)
         {
-            IVehicleMake make = new VehicleMake()
+            IVehicleMakeRepoModel make = new VehicleMakeRepoModel()
             {
                 Name = makeName,
                 Abrv = makeAbrv,
                 Id = makeId
             };
 
-            IVehicleModel model = new VehicleModel()
+            IVehicleModelRepoModel model = new VehicleModelRepoModel()
             {
                 Name = modelName,
                 Abrv = modelAbrv,
@@ -79,14 +79,14 @@ namespace Project.Service.Tests
         [InlineData("Volkswagen", "VW", "Golf 7", "Golf 7", 1, 1)]
         public async Task VehicleShouldBeDeletedTheory(string makeName, string makeAbrv, string modelName, string modelAbrv, int makeId, int modelId)
         {
-            IVehicleMake make = new VehicleMake()
+            IVehicleMakeRepoModel make = new VehicleMakeRepoModel()
             {
                 Name = makeName,
                 Abrv = makeAbrv,
                 Id = makeId
             };
 
-            IVehicleModel model = new VehicleModel()
+            IVehicleModelRepoModel model = new VehicleModelRepoModel()
             {
                 Name = modelName,
                 Abrv = modelAbrv,
@@ -96,23 +96,23 @@ namespace Project.Service.Tests
             };
 
             var vehicleService = new Mock<IVehicleService>();
-            vehicleService.Setup(s => s.DeleteAsync<IVehicleModel>(modelId));
-            await vehicleService.Object.DeleteAsync<IVehicleModel>(modelId);
-            vehicleService.Verify(c => c.DeleteAsync<IVehicleModel>(modelId), Times.Once());
+            vehicleService.Setup(s => s.DeleteAsync<IVehicleModelRepoModel>(modelId));
+            await vehicleService.Object.DeleteAsync<IVehicleModelRepoModel>(modelId);
+            vehicleService.Verify(c => c.DeleteAsync<IVehicleModelRepoModel>(modelId), Times.Once());
         }
     
         [Theory]
         [InlineData("Volkswagen", "VW", "Golf 7", "Golf 7", 1, 1)]
         public async Task VehicleShouldBeUpdatedTheory(string makeName, string makeAbrv, string modelName, string modelAbrv, int makeId, int modelId)
         {
-            IVehicleMake make = new VehicleMake()
+            IVehicleMakeRepoModel make = new VehicleMakeRepoModel()
             {
                 Name = makeName,
                 Abrv = makeAbrv,
                 Id = makeId
             };
 
-            IVehicleModel model = new VehicleModel()
+            IVehicleModelRepoModel model = new VehicleModelRepoModel()
             {
                 Name = modelName,
                 Abrv = modelAbrv,
@@ -131,22 +131,22 @@ namespace Project.Service.Tests
         [InlineData("Volkswagen", "VW", "Golf 7", "Golf 7", 1, 1)]
         public async Task VehiclesShouldAllBeFoundOrderedTheory(string makeName, string makeAbrv, string modelName, string modelAbrv, int makeId, int modelId)
         {
-            List<IVehicleMake> makeList = new List<IVehicleMake>();
-            List<IVehicleModel> modelList = new List<IVehicleModel>();
+            List<IVehicleMakeRepoModel> makeList = new List<IVehicleMakeRepoModel>();
+            List<IVehicleModelRepoModel> modelList = new List<IVehicleModelRepoModel>();
 
             await Task.Run(() =>
             {
 
                 for (int i = 0; i < 10; i++)
                 {
-                    makeList.Add(new VehicleMake()
+                    makeList.Add(new VehicleMakeRepoModel()
                     {
                         Name = makeName + i,
                         Abrv = makeAbrv + i,
                         Id = makeId + i
                     });
                     
-                    modelList.Add(new VehicleModel()
+                    modelList.Add(new VehicleModelRepoModel()
                     {
                         Name = modelName + i,
                         Abrv = modelAbrv + i,
@@ -156,17 +156,17 @@ namespace Project.Service.Tests
                 }
             });
 
-            var pagedModel = new PageServiceModel<IVehicleModel>() { QueryResult = modelList };
+            var pagedModel = new PageServiceModel<IVehicleModelRepoModel>() { QueryResult = modelList };
 
             var vehicleService = new Mock<IVehicleService>();
 
-            vehicleService.Setup(s => s.FindAsync<IVehicleModel>(null, null, null)).ReturnsAsync(pagedModel);
-            var result = await vehicleService.Object.FindAsync<IVehicleModel>(null, null, null);
-            vehicleService.Verify(c => c.FindAsync<IVehicleModel>(null, null, null), Times.Once());
+            vehicleService.Setup(s => s.FindAsync<IVehicleModelRepoModel>(null, null, null)).ReturnsAsync(pagedModel);
+            var result = await vehicleService.Object.FindAsync<IVehicleModelRepoModel>(null, null, null);
+            vehicleService.Verify(c => c.FindAsync<IVehicleModelRepoModel>(null, null, null), Times.Once());
             result.Should().NotBeNull();
             result.QueryResult.Should().NotBeNull();
             result.QueryResult.Should().HaveCount(10);
-            result.QueryResult.Should().AllBeAssignableTo<IVehicleModel>();
+            result.QueryResult.Should().AllBeAssignableTo<IVehicleModelRepoModel>();
             result.QueryResult.Should().NotContainNulls();
             result.QueryResult.Should().BeInAscendingOrder(x => x.Name);
         }

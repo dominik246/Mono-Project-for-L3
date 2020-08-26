@@ -11,9 +11,12 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 using Project.Common.Models;
+using Project.Common.Profiles;
 using Project.DAL;
 using Project.Repository;
 using Project.Repository.Common;
+using Project.Service;
+using Project.Service.Common;
 
 namespace Project.WebAPI
 {
@@ -36,8 +39,9 @@ namespace Project.WebAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddAutoMapper(typeof(Startup));
+            services.AddAutoMapper(typeof(Startup), typeof(VehicleProfile));
             services.AddControllers();
+            services.AddOptions();
         }
 
         public void ConfigureContainer(ContainerBuilder builder)
@@ -67,6 +71,14 @@ namespace Project.WebAPI
                 .InstancePerLifetimeScope();
             builder
                 .RegisterGeneric(typeof(PageRepositoryModel<>))
+                .AsSelf()
+                .InstancePerLifetimeScope();
+            builder
+                .RegisterType<VehicleService>()
+                .As<IVehicleService>()
+                .InstancePerLifetimeScope();
+            builder
+                .RegisterGeneric(typeof(PageServiceModel<>))
                 .AsSelf()
                 .InstancePerLifetimeScope();
         }
