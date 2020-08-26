@@ -20,7 +20,7 @@ namespace Project.Model
         public string Abrv { get; set; }
 
         public virtual ICollection<VehicleModelRepoModel> VehicleModelCollection { get; set; }
-
+        
         [NotMapped]
         IVehicleMakeRepoModel IVehicle.SelectedVehicleMake { get; set; }
     }

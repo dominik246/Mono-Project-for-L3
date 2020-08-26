@@ -7,6 +7,7 @@ namespace Project.DAL
 {
     public class ServiceDbContext : DbContext, IServiceDbContext
     {
+
         public ServiceDbContext(DbContextOptions options) : base(options) { }
 
         public DbSet<VehicleMakeRepoModel> VehicleMakes { get; set; }
@@ -16,7 +17,7 @@ namespace Project.DAL
         {
             builder.Entity<VehicleMakeRepoModel>()
                 .HasMany(m => m.VehicleModelCollection)
-                .WithOne(m => (VehicleMakeRepoModel)m.SelectedVehicleMake)
+                .WithOne(m => m.SelectedVehicleMake as VehicleMakeRepoModel)
                 .HasForeignKey(m => m.MakeId);
 
         }

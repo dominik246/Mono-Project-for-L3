@@ -15,7 +15,7 @@ namespace Project.DAL.Extensions
     {
         public static PageRepositoryModel<T> GetPaged<T>(this IQueryable<T> query, PageRepositoryModel<T> page) where T : class
         {
-            var pageCount = (double)page.TotalRowCount / page.CurrentPageSize;
+            var pageCount = (double)page.CurrentRowCount / page.CurrentPageSize;
             page.TotalPageCount = pageCount == 0 ? 1 : (int)Math.Ceiling(pageCount);
 
             var skip = (page.CurrentPageIndex - 1) * page.CurrentPageSize;

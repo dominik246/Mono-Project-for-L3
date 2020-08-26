@@ -21,7 +21,7 @@ namespace Project.Model
         [MaxLength(20)]
         [Display(Name = "Abbreviation")]
         public string Abrv { get; set; }
-        
+
         IVehicleMakeRepoModel IVehicle.SelectedVehicleMake { get; set; }
     }
 }

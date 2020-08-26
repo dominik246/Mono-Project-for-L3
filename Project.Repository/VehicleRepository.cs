@@ -29,7 +29,7 @@ namespace Project.Repository
 
             if (page.ReturnPaged)
             {
-                page.TotalRowCount = page.QueryResult.Count();
+                page.CurrentRowCount = page.QueryResult.Count();
                 page.QueryResult = page.QueryResult.GetPaged(page).QueryResult;
             }
 
