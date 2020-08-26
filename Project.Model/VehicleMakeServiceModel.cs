@@ -22,6 +22,6 @@ namespace Project.Model
         [Display(Name = "Abbreviation")]
         public string Abrv { get; set; }
 
-        IVehicleMakeRepoModel IVehicle.SelectedVehicleMake { get; set; }
+        public ICollection<VehicleModelRepoModel> VehicleModelCollection { get; set; }
     }
 }

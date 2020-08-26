@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 
 using Project.Common.Models;
+using Project.Model;
 using Project.Model.Common;
 
 namespace Project.Common.Profiles
@@ -10,13 +11,9 @@ namespace Project.Common.Profiles
         public VehicleProfile()
         {
             CreateMap(typeof(PageRepositoryModel<>), typeof(PageServiceModel<>));
-            //CreateMap(typeof(PageServiceModel<>), typeof(PageRepositoryModel<>))
-            //    .ForMember("QueryResult", m => m.Ignore())
-            //    .ForMember("ReturnPaged", m => m.Ignore());
-            CreateMap<IVehicleMakeRepoModel, IVehicleMakeServiceModel>();
-            CreateMap<IVehicleModelRepoModel, IVehicleModelServiceModel>();
-            CreateMap<IVehicleMakeServiceModel, IVehicleMakeRepoModel>();
-            CreateMap<IVehicleModelServiceModel, IVehicleModelRepoModel>();
+            CreateMap(typeof(PageServiceModel<>), typeof(PageServiceModel<>));
+            CreateMap<VehicleMakeRepoModel, VehicleMakeServiceModel>();
+            CreateMap<VehicleMakeServiceModel, VehicleMakeRepoModel>();
         }
     }
 }

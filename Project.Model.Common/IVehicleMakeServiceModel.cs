@@ -1,9 +1,9 @@
 ﻿namespace Project.Model.Common
 {
-    public interface IVehicleMakeServiceModel : IVehicle
+    public interface IVehicleMakeServiceModel
     {
-        new int Id { get; set; }
-        new string Name { get; set; }
-        new string Abrv { get; set; }
+        int Id { get; set; }
+        string Name { get; set; }
+        string Abrv { get; set; }
     }
 }

@@ -19,7 +19,7 @@ namespace Project.Model
         [Column(TypeName = "nvarchar(20)")]
         public string Abrv { get; set; }
 
-        public virtual ICollection<VehicleModelRepoModel> VehicleModelCollection { get; set; }
+        public ICollection<VehicleModelRepoModel> VehicleModelCollection { get; set; }
         
         [NotMapped]
         IVehicleMakeRepoModel IVehicle.SelectedVehicleMake { get; set; }

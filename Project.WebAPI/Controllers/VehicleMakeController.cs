@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
+using AutoMapper;
+
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -19,52 +22,59 @@ namespace Project.WebAPI.Controllers
     public class VehicleMakeController : ControllerBase
     {
         private readonly IVehicleService _vehicleService;
-        private PageRepositoryModel<IVehicleMakeServiceModel> _pageServiceModel;
+        private PageRepositoryModel<VehicleMakeRepoModel> _pageServiceModel;
         private FilterModel _filterModel;
         private SortModel _sortModel;
+        private IMapper _mapper;
 
-        public VehicleMakeController(IVehicleService vehicleService, PageRepositoryModel<IVehicleMakeServiceModel> pageServiceModel, FilterModel filterModel, SortModel sortModel)
+        public VehicleMakeController(IVehicleService vehicleService, PageRepositoryModel<VehicleMakeRepoModel> pageServiceModel, FilterModel filterModel, SortModel sortModel, IMapper mapper)
         {
             _vehicleService = vehicleService;
             _pageServiceModel = pageServiceModel;
             _filterModel = filterModel;
             _sortModel = sortModel;
+            _mapper = mapper;
         }
 
         // GET: api/VehicleMake
         [HttpGet]
-        public async Task<ActionResult<PageServiceModel<IVehicleMakeServiceModel>>> GetVehicleMakes()
+        public async Task<ActionResult<PageServiceModel<VehicleMakeServiceModel>>> GetVehicleMakes(int page = 1, string filter = "", string sortby = "Id")
         {
+            _pageServiceModel.CurrentPageIndex = page;
+            _filterModel.FilterString = filter;
+            _sortModel.SortBy = sortby;
             var result = await _vehicleService.FindAsync(_filterModel, _pageServiceModel, _sortModel);
-            return Ok(result);
+            var dto = _mapper.Map<PageServiceModel<VehicleMakeServiceModel>>(result);
+            return dto;
         }
 
         // GET: api/VehicleMake/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<IVehicleMakeServiceModel>> GetVehicleMakeServiceModel(int? id)
+        public async Task<ActionResult<VehicleMakeServiceModel>> GetVehicleMakeServiceModel(int? id)
         {
-            var vehicleMakeRepoModel = await _vehicleService.GetAsync<IVehicleMakeServiceModel>(id);
+            var vehicleMakeRepoModel = await _vehicleService.GetAsync<VehicleMakeRepoModel>(id);
 
             if (vehicleMakeRepoModel == null)
             {
                 return NotFound();
             }
+            var dto = _mapper.Map<VehicleMakeServiceModel>(vehicleMakeRepoModel);
 
-            return Ok(vehicleMakeRepoModel);
+            return Ok(dto);
         }
 
         // PUT: api/VehicleMake/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutVehicleMakeServiceModel(int id, IVehicleMakeServiceModel vehicleMakeServiceModel)
+        public async Task<ActionResult> PutVehicleMakeServiceModel(int id, VehicleMakeServiceModel vehicleMakeServiceModel)
         {
             if (id != vehicleMakeServiceModel.Id)
             {
                 return BadRequest();
             }
-
-            await _vehicleService.UpdateAsync(vehicleMakeServiceModel);
+            var dto = _mapper.Map<VehicleMakeRepoModel>(vehicleMakeServiceModel);
+            await _vehicleService.UpdateAsync(dto);
 
             return NoContent();
         }
@@ -73,26 +83,27 @@ namespace Project.WebAPI.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<IVehicleMakeServiceModel>> PostVehicleMakeRepoModel(IVehicleMakeServiceModel vehicleMakeServiceModel)
+        public async Task<ActionResult<VehicleMakeServiceModel>> PostVehicleMakeRepoModel(VehicleMakeServiceModel vehicleMakeServiceModel)
         {
-            await _vehicleService.CreateAsync(vehicleMakeServiceModel);
+            var dto = _mapper.Map<VehicleMakeRepoModel>(vehicleMakeServiceModel);
+            await _vehicleService.CreateAsync(dto);
 
             return CreatedAtAction("GetVehicleMakeServiceModel", new { id = vehicleMakeServiceModel.Id }, vehicleMakeServiceModel);
         }
 
         // DELETE: api/VehicleMake/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<IVehicleMakeServiceModel>> DeleteVehicleMakeServiceModel(int id)
+        public async Task<ActionResult<VehicleMakeServiceModel>> DeleteVehicleMakeServiceModel(int id)
         {
-            var vehicleMakeServiceModel = await _vehicleService.GetAsync<IVehicleMakeServiceModel>(id);
-            if (vehicleMakeServiceModel == null)
+            var vehicleMakeRepoModel = await _vehicleService.GetAsync<VehicleMakeRepoModel>(id);
+            if (vehicleMakeRepoModel == null)
             {
                 return NotFound();
             }
+            await _vehicleService.DeleteAsync<VehicleMakeRepoModel>(id);
+            var dto = _mapper.Map<VehicleMakeServiceModel>(vehicleMakeRepoModel);
 
-            await _vehicleService.DeleteAsync<IVehicleMakeServiceModel>(id);
-
-            return Ok(vehicleMakeServiceModel);
+            return Ok(dto);
         }
     }
 }
